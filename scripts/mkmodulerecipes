@@ -1,0 +1,83 @@
+#!/bin/bash
+
+VERSION=1.2.5
+RECIPES=${1:-"../recipes-oatpp"}
+
+generate_recipe() {
+    RECIPE="$RECIPES/oatpp-$2/oatpp-$2_$VERSION.bb"
+    echo "Generating recipe for $1 ($VERSION) in $RECIPE"
+    mkdir -p ./recipes-oatpp/oatpp-$2
+    touch $RECIPE
+    cat << EOF > $RECIPE
+#############################################################################
+#
+# Project         _____    __   ____   _      _
+#                (  _  )  /__\ (_  _)_| |_  _| |_
+#                 )(_)(  /(__)\  )( (_   _)(_   _)
+#                (_____)(__)(__)(__)  |_|    |_|
+#
+#
+# Copyright 2021-present, Benedikt-Alexander Mokroß <github@bamkrs.de>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+#############################################################################
+
+DESCRIPTION = "Oat++ $1" 
+inherit oatpp-module
+
+EOF
+    if [ "$#" -gt 2 ]; then
+        echo "DEPENDS_append = \" $3\"" >> $RECIPE
+    fi
+
+}
+
+generate_recipe Websocket websocket
+generate_recipe PostgreSQL postgresql "postgresql"
+generate_recipe SSDP ssdp
+generate_recipe OpenSSL openssl "openssl"
+generate_recipe libressl libressl "libressl"
+generate_recipe zlib zlib "zlib"
+generate_recipe SQLite sqlite "sqlite3"
+generate_recipe MongoDB mongo "mongodb"
+generate_recipe MbedTLS mbedtls "mbedtls"
+generate_recipe Curl curl "curl"
+generate_recipe Protobuf protobuf "protobuf"
+# generate_recipe BoringSSL boringssl
+
+# Swagger does need a little more for its resources
+generate_recipe "Swagger (OAS 3.0)" swagger
+cat << EOF >> "$RECIPES/oatpp-swagger/oatpp-swagger_$VERSION.bb"
+PACKAGES += " ${PN}-ui"
+
+RESIDR = "${incdir}/oatpp-${PV}/bin/oatpp-swagger/res"
+FILES_${PN}-ui = " \\
+    ${RESDIR}/swagger-ui.js.map \\
+    ${RESDIR}/swagger-ui-standalone-preset.js \\
+    ${RESDIR}/swagger-ui.css \\
+    ${RESDIR}/swagger-ui.js \\
+    ${RESDIR}/swagger-ui-es-bundle-core.js \\
+    ${RESDIR}/swagger-ui-es-bundle-core.js.map \\
+    ${RESDIR}/swagger-ui-bundle.js \\
+    ${RESDIR}/favicon-32x32.png \\
+    ${RESDIR}/favicon-16x16.png \\
+    ${RESDIR}/swagger-ui-es-bundle.js \\
+    ${RESDIR}/swagger-ui-es-bundle.js.map \\
+    ${RESDIR}/oauth2-redirect.html \\
+    ${RESDIR}/swagger-ui-standalone-preset.js.map \\
+    ${RESDIR}/index.html \\
+    ${RESDIR}/swagger-ui-bundle.js.map \\
+    ${RESDIR}/swagger-ui.css.map \\
+"
+EOF
