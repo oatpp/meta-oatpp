@@ -25,24 +25,24 @@
 DESCRIPTION = "Oat++ Swagger (OAS 3.0)" 
 inherit oatpp-module
 
-PACKAGES += " -ui"
+PACKAGES += " ${PN}-ui"
 
-RESIDR = "/oatpp-/bin/oatpp-swagger/res"
-FILES_-ui = " \
-    /swagger-ui.js.map \
-    /swagger-ui-standalone-preset.js \
-    /swagger-ui.css \
-    /swagger-ui.js \
-    /swagger-ui-es-bundle-core.js \
-    /swagger-ui-es-bundle-core.js.map \
-    /swagger-ui-bundle.js \
-    /favicon-32x32.png \
-    /favicon-16x16.png \
-    /swagger-ui-es-bundle.js \
-    /swagger-ui-es-bundle.js.map \
-    /oauth2-redirect.html \
-    /swagger-ui-standalone-preset.js.map \
-    /index.html \
-    /swagger-ui-bundle.js.map \
-    /swagger-ui.css.map \
+RESIDR = "${incdir}/oatpp-${PV}/bin/oatpp-swagger/res"
+FILES_${PN}-ui = " \
+    ${RESDIR}/swagger-ui.js.map \
+    ${RESDIR}/swagger-ui-standalone-preset.js \
+    ${RESDIR}/swagger-ui.css \
+    ${RESDIR}/swagger-ui.js \
+    ${RESDIR}/swagger-ui-es-bundle-core.js \
+    ${RESDIR}/swagger-ui-es-bundle-core.js.map \
+    ${RESDIR}/swagger-ui-bundle.js \
+    ${RESDIR}/favicon-32x32.png \
+    ${RESDIR}/favicon-16x16.png \
+    ${RESDIR}/swagger-ui-es-bundle.js \
+    ${RESDIR}/swagger-ui-es-bundle.js.map \
+    ${RESDIR}/oauth2-redirect.html \
+    ${RESDIR}/swagger-ui-standalone-preset.js.map \
+    ${RESDIR}/index.html \
+    ${RESDIR}/swagger-ui-bundle.js.map \
+    ${RESDIR}/swagger-ui.css.map \
 "
