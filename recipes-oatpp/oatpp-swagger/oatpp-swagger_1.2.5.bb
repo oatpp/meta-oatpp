@@ -25,9 +25,24 @@
 DESCRIPTION = "Oat++ Swagger (OAS 3.0)" 
 inherit oatpp-module
 
-PACKAGES += " ${PN}-ui"
+PACKAGES_prepend = "${PN}-ui "
 
-RESIDR = "${incdir}/oatpp-${PV}/bin/oatpp-swagger/res"
+INCDIR = "${includedir}/oatpp-${PV}/${PN}/${PN}"
+CMDIR = "${libdir}/cmake/${PN}-${PV}"
+FILES_${PN} = " \
+    ${INCDIR}/AsyncController.hpp \
+    ${INCDIR}/Controller.hpp \
+    ${INCDIR}/Generator.hpp \
+    ${INCDIR}/Model.hpp \
+    ${INCDIR}/Resources.hpp \
+    ${INCDIR}/Types.hpp \
+    ${INCDIR}/oas3/Model.hpp \    
+    ${CMDIR}/oatpp-swaggerConfig.cmake \
+    ${CMDIR}/oatpp-swaggerConfigVersion.cmake \
+    ${CMDIR}/oatpp-swaggerTargets.cmake \
+    ${CMDIR}/oatpp-swaggerTargets-noconfig.cmake \
+"
+RESDIR = "${includedir}/oatpp-${PV}/bin/oatpp-swagger/res"
 FILES_${PN}-ui = " \
     ${RESDIR}/swagger-ui.js.map \
     ${RESDIR}/swagger-ui-standalone-preset.js \
