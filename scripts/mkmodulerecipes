@@ -2,6 +2,42 @@
 
 VERSION=$1
 RECIPES=${2:-"../recipes-oatpp"}
+PKGGROUP=$RECIPES/packagegroup/packagegroup-oatpp_$VERSION.bb
+
+generate_packagegroup() {
+    mkdir -p $RECIPES/packagegroup
+    cat << EOF > $PKGGROUP
+#############################################################################
+#
+# Project         _____    __   ____   _      _
+#                (  _  )  /__\ (_  _)_| |_  _| |_
+#                 )(_)(  /(__)\  )( (_   _)(_   _)
+#                (_____)(__)(__)(__)  |_|    |_|
+#
+#
+# Copyright 2021-present, Benedikt-Alexander Mokroß <github@bamkrs.de>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+#############################################################################
+
+SUMMARY = "All Oat++ packages"
+
+inherit packagegroup
+
+EOF
+
+}
 
 generate_recipe() {
     RECIPE="$RECIPES/oatpp-$2/oatpp-$2_$VERSION.bb"
@@ -40,8 +76,11 @@ EOF
     if [ "$#" -gt 2 ]; then
         echo "DEPENDS_append = \" $3\"" >> $RECIPE
     fi
+    echo "RDEPENDS_\${PN} += \"$2\"" >> $PKGGROUP
 
 }
+
+generate_packagegroup
 
 generate_recipe Websocket websocket
 generate_recipe PostgreSQL postgresql "postgresql"
