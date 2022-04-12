@@ -28,7 +28,7 @@ PR = "r0"
 
 DEPENDS = "oatpp"
 
-SRC_URI = "git://github.com/oatpp/${PN};tag=${PV}"
+SRC_URI = "git://github.com/oatpp/${PN};protocol=https;tag=${PV}"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 ALLOW_EMPTY_${PN} = "1"
