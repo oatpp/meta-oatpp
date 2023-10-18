@@ -25,4 +25,4 @@
 DESCRIPTION = "Oat++ libressl" 
 inherit oatpp-module
 
-DEPENDS_append = " libressl"
+DEPENDS:append = " libressl"

@@ -25,4 +25,4 @@
 DESCRIPTION = "Oat++ SQLite" 
 inherit oatpp-module
 
-DEPENDS_append = " sqlite3"
+DEPENDS:append = " sqlite3"

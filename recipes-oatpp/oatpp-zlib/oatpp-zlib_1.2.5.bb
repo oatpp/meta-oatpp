@@ -25,4 +25,4 @@
 DESCRIPTION = "Oat++ zlib" 
 inherit oatpp-module
 
-DEPENDS_append = " zlib"
+DEPENDS:append = " zlib"

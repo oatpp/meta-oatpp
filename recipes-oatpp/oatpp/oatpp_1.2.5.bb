@@ -31,7 +31,7 @@ PR = "r0"
 SRC_URI = "git://github.com/oatpp/oatpp;protocol=https;tag=1.2.5"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-ALLOW_EMPTY_${PN} = "1"
+ALLOW_EMPTY:${PN} = "1"
 
 S = "${WORKDIR}/git"
 
@@ -54,7 +54,7 @@ PACKAGECONFIG[logi] = "-DOATPP_DISABLE_LOGI=OFF,-DOATPP_DISABLE_LOGI=ON"
 PACKAGECONFIG[logw] = "-DOATPP_DISABLE_LOGW=OFF,-DOATPP_DISABLE_LOGW=ON"
 PACKAGECONFIG[loge] = "-DOATPP_DISABLE_LOGE=OFF,-DOATPP_DISABLE_LOGE=ON"
 
-FILES_${PN}-staticdev = "\
+FILES:${PN}-staticdev = "\
     ${libdir}/oatpp-${PV}/liboatpp.a \
     ${libdir}/oatpp-${PV}/liboatpp-test.a \
 "

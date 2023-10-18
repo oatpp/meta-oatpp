@@ -25,4 +25,4 @@
 DESCRIPTION = "Oat++ Curl" 
 inherit oatpp-module
 
-DEPENDS_append = " curl"
+DEPENDS:append = " curl"
