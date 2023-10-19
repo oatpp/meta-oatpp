@@ -25,4 +25,4 @@
 DESCRIPTION = "Oat++ MbedTLS" 
 inherit oatpp-module
 
-DEPENDS_append = " mbedtls"
+DEPENDS:append = " mbedtls"

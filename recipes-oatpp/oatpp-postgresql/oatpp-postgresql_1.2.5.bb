@@ -25,4 +25,4 @@
 DESCRIPTION = "Oat++ PostgreSQL" 
 inherit oatpp-module
 
-DEPENDS_append = " postgresql"
+DEPENDS:append = " postgresql"

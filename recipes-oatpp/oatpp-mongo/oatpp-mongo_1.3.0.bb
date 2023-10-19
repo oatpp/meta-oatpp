@@ -25,4 +25,4 @@
 DESCRIPTION = "Oat++ MongoDB" 
 inherit oatpp-module
 
-DEPENDS_append = " mongodb"
+DEPENDS:append = " mongodb"

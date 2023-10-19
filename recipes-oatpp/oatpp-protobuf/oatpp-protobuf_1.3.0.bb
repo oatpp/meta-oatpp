@@ -25,4 +25,4 @@
 DESCRIPTION = "Oat++ Protobuf" 
 inherit oatpp-module
 
-DEPENDS_append = " protobuf"
+DEPENDS:append = " protobuf"
