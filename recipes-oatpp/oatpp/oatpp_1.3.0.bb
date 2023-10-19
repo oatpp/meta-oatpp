@@ -27,8 +27,9 @@ SECTION = "oatpp"
 LICENSE = "Apache-2.0" 
 PR = "r0" 
 
+SRCREV = "349d96114ae03ae6fd44dd2a398e5cdd9529fb48"
 
-SRC_URI = "git://github.com/oatpp/oatpp;protocol=https;tag=1.3.0"
+SRC_URI = "git://github.com/oatpp/oatpp;protocol=https;branch=master"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 ALLOW_EMPTY:${PN} = "1"
